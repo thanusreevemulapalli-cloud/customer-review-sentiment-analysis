@@ -1,0 +1,22 @@
+Create DAX Measures
+Total Reviews
+Total Reviews =
+COUNT(FactReviews[ReviewID])
+  
+Positive Reviews
+Positive Reviews =
+CALCULATE(
+COUNT(FactReviews[ReviewID]),
+FactReviews[Sentiment] = "Positive"
+)
+  
+Negative Reviews
+Negative Reviews =
+CALCULATE(
+COUNT(FactReviews[ReviewID]),
+FactReviews[Sentiment] = "Negative"
+)
+  
+Sentiment Score
+Sentiment Score =
+DIVIDE([Positive Reviews], [Total Reviews])
